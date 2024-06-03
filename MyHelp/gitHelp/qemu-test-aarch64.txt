@@ -1,0 +1,52 @@
+qemu-system-aarch64 
+ -M virt -m 8G -cpu cortex-a72 -smp 4 \
+    -bios QEMU_EFI.fd \
+    -drive id=cdrom,media=cdrom,if=none,file=/Users/m.c./stayboogy/10arm64-21h2.ISO \
+    -device virtio-scsi-device -device scsi-cd,drive=cdrom \
+    -drive id=hd0,media=disk,if=none,file=/Users/m.c./stayboogy/10Arm64/Windows10Arm64.qcow2 \
+    -device virtio-scsi-pci -device scsi-hd,drive=hd0 \
+    -nic user,model=virtio-net-pci,hostfwd=tcp::2222-:22,hostfwd=tcp::6900-:5900 \
+    -nographic
+	
+	
+qemu-system-aarch64 -M virt -m 8G -cpu cortex-a72 -smp 4 -bios "/Users/m.c./stayboogy/10Arm64/OVMF_CODE.fd" -drive id=cdrom,media=cdrom,if=none,file="/Users/m.c./stayboogy/10Arm64/Windows10Arm64.ISO" -device virtio-scsi-device -device scsi-cd,drive=cdrom -drive id=hd0,media=disk,if=none,file=/Users/m.c./stayboogy/10Arm64/Windows10Arm64.qcow2 
+
+
+qemu-system-aarch64 -machine vexpress-a15 -m 8G -smp 4 -cdrom /Users/m.c./stayboogy/10Arm64/Windows10Arm64.ISO -drive file=/Users/m.c./stayboogy/10Arm64/Windows10Arm64.qcow2,if=virtio -vga std -display default,show-cursor=on
+
+
+
+qemu-system-aarch64 -M virt,highmem=off -accel hvf -m 2G -cdrom /Users/m.c./stayboogy/10Arm64/Windows10Arm64.ISO -boot d -bios "/Users/m.c./stayboogy/10Arm64/OVMF_CODE.fd" -serial stdio -boot menu=off -cpu cortex-a72 -nodefaults
+
+
+qemu-system-aarch64 -machine virt -m 8G -smp 4 -cpu host -cdrom /Users/m.c./stayboogy/10Arm64/Windows10Arm64.ISO -drive /Users/m.c./stayboogy/10Arm64/Windows10Arm64.qcow2 -vga std -display default,show-cursor=on
+
+/Users/m.c./stayboogy/10Arm64/Windows10Arm64.qcow2 
+
+/Users/m.c./stayboogy/10Arm64/Windows10Arm64.ISO
+
+-drive ./10Arm64/Windows10Arm64.qcow2,if=virtio,cache=writethrough \
+
+
+
+qemu-system-aarch64 \
+  -monitor stdio \
+  -M virt,highmem=off \
+  -accel hvf \
+  -cpu cortex-a72 \
+  -smp 4 \
+  -m 4096 \
+  -drive file=./pflash0.img,format=raw,if=pflash,readonly=on \
+  -drive file=./pflash1.img,format=raw,if=pflash \
+  -device virtio-gpu-pci \
+  -display default,show-cursor=on \
+  -audiodev id=none,driver=none \
+  -vga std \
+  -device qemu-xhci \
+  -device usb-kbd \
+  -device usb-tablet \
+  -device intel-hda \
+  -device hda-duplex \
+  -drive id=hd0,media=disk,if=virtio,cache=writethrough,file=./Windows10Arm64.qcow2
+  -cdrom ./Windows10Arm64.ISO
+

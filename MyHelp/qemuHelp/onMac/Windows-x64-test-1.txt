@@ -1,0 +1,10 @@
+qemu-system-x86_64 -m 8G -smp 4 -hda ./Windows.qcow2 -boot menu=on -cdrom ./install.iso -device AC97
+
+
+qemu-system-x86_64 -m 8G -smp 4 -hda ./Windows.qcow2 -boot menu=on -audiodev coreaudio,id=audio0 -device intel-hda -device hda-output,audiodev=audio0
+
+
+qemu-system-x86_64 -m 8G -smp 4 -accel tcg -boot menu=on -audiodev coreaudio,id=audio0 -device intel-hda -device hda-output,audiodev=audio0 -cdrom /Users/m.c./stayboogy/MasterFiles/2_System/Windows/Windows10/10x64/x64_stayboogy-installer.iso -hda ./Windows.qcow2
+
+
+/Users/m.c./stayboogy/MasterFiles/2_System/Windows/Windows7/ISO/Windows7EnterpriseSP1x64.iso

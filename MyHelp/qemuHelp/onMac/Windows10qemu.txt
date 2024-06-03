@@ -1,0 +1,1 @@
+qemu-system-x86_64 -m 8G -smp 4 -accel tcg -boot menu=on -audiodev coreaudio,id=audio0 -device intel-hda -device hda-output,audiodev=audio0 -cdrom /Users/m.c./stayboogy/MasterFiles/2_System/Windows/Software/VS2010SP1dvd1.iso -hda ./Windows.qcow2 -hdb ./Gaming.img
