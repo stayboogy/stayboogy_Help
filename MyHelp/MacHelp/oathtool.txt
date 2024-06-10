@@ -1,0 +1,3 @@
+brew install oathtool
+
+usage: oathtool -b --totp secretkey
