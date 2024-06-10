@@ -1,0 +1,1 @@
+brew install pkg-config openssl@1.1 xz gdbm tcl-tk
